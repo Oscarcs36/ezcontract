@@ -73,10 +73,9 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/api/auth/**").permitAll()
-                                //.requestMatchers("/api/admin/**").permitAll()
-                                //.requestMatchers("/api/public/**").permitAll()
-                                .requestMatchers("/api/cart/**").permitAll()
-                                .requestMatchers("/images/**").permitAll()
+                                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/api/public/**").permitAll()
+                                .requestMatchers("/api/users/**").authenticated()
                                 .anyRequest().authenticated()
                 );
         http.authenticationProvider(authenticationProvider());

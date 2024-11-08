@@ -10,7 +10,6 @@ public class AppConfig {
     @Bean
     public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
-
         return modelMapper;
     }
 
